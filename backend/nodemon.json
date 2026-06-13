@@ -1,0 +1,6 @@
+{
+  "watch": [".env", "*.js", "config", "controllers", "middleware", "models", "routes", "utils", "data"],
+  "ext": "js,json",
+  "delay": 1500,
+  "killTimeout": 3000
+}

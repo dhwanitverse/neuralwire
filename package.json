@@ -1,0 +1,19 @@
+{
+  "name": "techblog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "predev": "npx kill-port 3000 5000",
+    "dev": "concurrently -n backend,frontend -c blue,magenta \"npm run dev:backend\" \"npx wait-on http://localhost:5000/api/health -t 180000 && npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "seed:reset": "cd backend && npm run seed:reset",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "kill-port": "^2.0.1",
+    "wait-on": "^8.0.3"
+  }
+}
