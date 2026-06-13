@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Search, ArrowRight, Sparkles, Radio } from 'lucide-react';
 import IntelligenceMap from '@/components/home/IntelligenceMap';
+import { Parallax } from '@/components/home/story/Parallax';
 import { BRAND } from '@/lib/brand';
 
 export default function Hero() {
@@ -19,8 +20,12 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-[var(--nw-bg)]">
-      <div className="pointer-events-none absolute inset-0 nw-hero-grid" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_0%,rgba(59,130,246,0.14),transparent_55%),radial-gradient(ellipse_60%_50%_at_90%_20%,rgba(139,92,246,0.1),transparent_50%)]" />
+      <Parallax className="pointer-events-none absolute -inset-y-28 inset-x-0" distance={70} direction={1}>
+        <div className="absolute inset-0 nw-hero-grid" />
+      </Parallax>
+      <Parallax className="pointer-events-none absolute -inset-y-32 inset-x-0" distance={110} direction={1}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_0%,rgba(59,130,246,0.14),transparent_55%),radial-gradient(ellipse_60%_50%_at_90%_20%,rgba(139,92,246,0.1),transparent_50%)]" />
+      </Parallax>
 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14 lg:px-8 lg:pb-24">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -117,9 +122,11 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="relative"
           >
-            <div className="nw-surface-card overflow-hidden rounded-3xl border border-white/[0.08] p-4 sm:p-6">
-              <IntelligenceMap />
-            </div>
+            <Parallax distance={48} direction={-1}>
+              <div className="nw-surface-card overflow-hidden rounded-3xl border border-white/[0.08] p-4 sm:p-6">
+                <IntelligenceMap />
+              </div>
+            </Parallax>
           </motion.div>
         </div>
       </div>

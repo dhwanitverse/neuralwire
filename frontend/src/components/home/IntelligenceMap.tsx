@@ -17,7 +17,13 @@ const LINKS: [string, string][] = [
   ['ai', 'cloud'], ['ai', 'bio'], ['llm', 'sec'], ['chip', 'cloud'],
 ];
 
-export default function IntelligenceMap({ compact = false }: { compact?: boolean }) {
+export default function IntelligenceMap({
+  compact = false,
+  bare = false,
+}: {
+  compact?: boolean;
+  bare?: boolean;
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,7 +56,9 @@ export default function IntelligenceMap({ compact = false }: { compact?: boolean
         compact ? 'min-h-[240px]' : 'min-h-[420px] lg:min-h-[520px]'
       }`}
     >
-      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.12),transparent_65%)]" />
+      {!bare && (
+        <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.12),transparent_65%)]" />
+      )}
       <div
         ref={wrapRef}
         className={`nw-intel-map relative aspect-square w-full transition-transform duration-200 ease-out ${
@@ -109,14 +117,18 @@ export default function IntelligenceMap({ compact = false }: { compact?: boolean
           </g>
         </svg>
 
-        <div className="nw-intel-stat absolute left-4 top-4 rounded-xl border border-white/[0.08] bg-[rgba(11,17,32,0.8)] px-3 py-2 backdrop-blur-md">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Live signals</p>
-          <p className="font-display text-lg font-bold text-white">2,847</p>
-        </div>
-        <div className="nw-intel-stat absolute bottom-6 right-2 rounded-xl border border-white/[0.08] bg-[rgba(11,17,32,0.8)] px-3 py-2 backdrop-blur-md">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-cyan-400">AI coverage</p>
-          <p className="font-display text-lg font-bold text-white">24/7</p>
-        </div>
+        {!bare && (
+          <>
+            <div className="nw-intel-stat absolute left-4 top-4 rounded-xl border border-white/[0.08] bg-[rgba(11,17,32,0.8)] px-3 py-2 backdrop-blur-md">
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Live signals</p>
+              <p className="font-display text-lg font-bold text-white">2,847</p>
+            </div>
+            <div className="nw-intel-stat absolute bottom-6 right-2 rounded-xl border border-white/[0.08] bg-[rgba(11,17,32,0.8)] px-3 py-2 backdrop-blur-md">
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-cyan-400">AI coverage</p>
+              <p className="font-display text-lg font-bold text-white">24/7</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

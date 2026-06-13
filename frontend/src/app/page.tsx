@@ -131,7 +131,9 @@ export default function HomePage() {
         {loading ? (
           <div className="skeleton min-h-[360px] rounded-3xl" />
         ) : (
-          <FeaturedShowcase items={editorsShowcase} mode="editorial" />
+          <JourneyStagger distance={40} direction={-1}>
+            <FeaturedShowcase items={editorsShowcase} mode="editorial" />
+          </JourneyStagger>
         )}
       </JourneySection>
 
@@ -161,7 +163,9 @@ export default function HomePage() {
             ))}
           </div>
         ) : (
-          <LatestArticles blogs={latest} />
+          <JourneyStagger distance={36}>
+            <LatestArticles blogs={latest} />
+          </JourneyStagger>
         )}
       </JourneySection>
 

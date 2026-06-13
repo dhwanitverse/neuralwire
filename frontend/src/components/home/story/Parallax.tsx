@@ -7,6 +7,7 @@ import {
   useTransform,
   useSpring,
   useMotionValue,
+  MotionValue,
 } from 'framer-motion';
 import { useLightMotion } from './useLightMotion';
 
@@ -17,12 +18,14 @@ import { useLightMotion } from './useLightMotion';
  * CSS `transform`, it never changes layout `offsetTop`/`offsetHeight`, so the
  * scroll-linked neural journey path stays perfectly in sync.
  *
- * Automatically disabled on mobile and when the user prefers reduced motion.
+ * Automatically reduced to no movement on mobile and when the user prefers
+ * reduced motion. The element type never changes, which keeps Framer's scroll
+ * tracking stable across the enable/disable flip.
  */
 interface ParallaxProps {
   children: ReactNode;
   className?: string;
-  /** Total travel in px across one viewport pass. Keep subtle (20–60). */
+  /** Total travel in px across one viewport pass. Keep subtle (20–80). */
   distance?: number;
   /** Direction of travel; -1 reverses it (useful for layered depth). */
   direction?: 1 | -1;
@@ -32,7 +35,7 @@ interface ParallaxProps {
 export function Parallax({
   children,
   className,
-  distance = 40,
+  distance = 60,
   direction = 1,
   as = 'div',
 }: ParallaxProps) {
@@ -45,20 +48,18 @@ export function Parallax({
   });
 
   const travel = distance * direction;
-  const y = useTransform(scrollYProgress, [0, 1], [travel, -travel]);
-
-  if (light) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  const yMotion = useTransform(scrollYProgress, [0, 1], [travel, -travel]);
+  const zero = useMotionValue(0);
+  const y: MotionValue<number> = light ? zero : yMotion;
 
   const MotionTag = as === 'span' ? motion.span : motion.div;
 
   return (
-    <MotionTag ref={ref} style={{ y, willChange: 'transform' }} className={className}>
+    <MotionTag
+      ref={ref}
+      style={{ y, willChange: light ? undefined : 'transform' }}
+      className={className}
+    >
       {children}
     </MotionTag>
   );
@@ -75,7 +76,7 @@ interface ParallaxTiltProps {
   max?: number;
 }
 
-export function ParallaxTilt({ children, className, max = 5 }: ParallaxTiltProps) {
+export function ParallaxTilt({ children, className, max = 6 }: ParallaxTiltProps) {
   const light = useLightMotion();
   const ref = useRef<HTMLDivElement>(null);
 

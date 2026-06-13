@@ -3016,3 +3016,229 @@ body::-webkit-scrollbar { display: none; }
   .nw-scroll-hint { animation: none; }
   .nw-category-node { animation: none; opacity: 1; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Cinematic Hero v2 + Neural Command Center
+   ═══════════════════════════════════════════════════════════════ */
+.nw-hero2 {
+  isolation: isolate;
+}
+
+/* Aurora lighting */
+.nw-hero2-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  will-change: transform;
+}
+.nw-hero2-aurora-1 {
+  top: 2%;
+  left: -8%;
+  width: 44vw;
+  height: 44vw;
+  max-width: 680px;
+  max-height: 680px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.55), transparent 66%);
+  animation: nw-aurora-a 28s ease-in-out infinite;
+}
+.nw-hero2-aurora-2 {
+  top: 8%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  max-width: 620px;
+  max-height: 620px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent 66%);
+  animation: nw-aurora-b 34s ease-in-out infinite;
+}
+.nw-hero2-aurora-3 {
+  bottom: -16%;
+  left: 32%;
+  width: 38vw;
+  height: 38vw;
+  max-width: 560px;
+  max-height: 560px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.38), transparent 66%);
+  animation: nw-aurora-c 32s ease-in-out infinite;
+}
+
+/* Animated neural mesh */
+.nw-hero2-mesh {
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, black 5%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, black 5%, transparent 78%);
+  animation: nw-mesh-drift 42s linear infinite;
+}
+
+/* Subtle noise texture */
+.nw-hero2-noise {
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.nw-hero2-vignette {
+  background: radial-gradient(ellipse 85% 80% at 50% 42%, transparent 52%, rgba(2, 4, 10, 0.72) 100%);
+}
+
+/* Badge + live chip */
+.nw-hero2-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  background: linear-gradient(120deg, rgba(139, 92, 246, 0.12), rgba(59, 130, 246, 0.08));
+  padding: 0.4rem 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c4b5fd;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 30px -14px rgba(139, 92, 246, 0.8);
+}
+
+.nw-hero2-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.4rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6ee7b7;
+  backdrop-filter: blur(10px);
+}
+.nw-hero2-live-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px 1px rgba(52, 211, 153, 0.8);
+}
+.nw-hero2-live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(52, 211, 153, 0.6);
+  animation: nw-live-ping 2s ease-out infinite;
+}
+@keyframes nw-live-ping {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ── Neural Command Center ── */
+.nw-cc { position: relative; }
+
+.nw-cc-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(139, 92, 246, 0.22);
+}
+.nw-cc-ring-2 {
+  inset: 13%;
+  border-style: solid;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+.nw-cc-ring-3 {
+  inset: 26%;
+  border-style: dashed;
+  border-color: rgba(34, 211, 238, 0.16);
+}
+.nw-cc-ring-spin { animation: nw-cc-spin 26s linear infinite; }
+.nw-cc-ring-spin-rev { animation: nw-cc-spin 34s linear infinite reverse; }
+@keyframes nw-cc-spin { to { transform: rotate(360deg); } }
+
+.nw-cc-ring-node {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 14px 2px rgba(167, 139, 250, 0.9);
+}
+.nw-cc-ring-node-cyan {
+  background: #22d3ee;
+  box-shadow: 0 0 14px 2px rgba(34, 211, 238, 0.9);
+}
+
+/* Mini AI radar sweep */
+.nw-cc-radar {
+  position: absolute;
+  inset: 26%;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(circle, black 60%, transparent 72%);
+  mask-image: radial-gradient(circle, black 60%, transparent 72%);
+}
+.nw-cc-radar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, rgba(34, 211, 238, 0.32), rgba(34, 211, 238, 0.04) 22%, transparent 32%);
+  animation: nw-cc-spin 5s linear infinite;
+}
+
+/* Central orb glow */
+.nw-cc-orb {
+  position: absolute;
+  inset: 36%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 30%, rgba(167, 139, 250, 0.5), rgba(59, 130, 246, 0.18) 55%, transparent 74%);
+  box-shadow: 0 0 70px rgba(139, 92, 246, 0.45), inset 0 0 40px rgba(34, 211, 238, 0.25);
+  animation: nw-cc-orb-pulse 5.5s ease-in-out infinite;
+}
+@keyframes nw-cc-orb-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+/* Floating intelligence panels */
+.nw-cc-panel {
+  z-index: 5;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(150deg, rgba(17, 24, 42, 0.82), rgba(10, 14, 28, 0.72));
+  padding: 0.6rem 0.8rem;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+.nw-cc-panel-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nw-hero2-aurora,
+  .nw-hero2-mesh,
+  .nw-hero2-live-dot::after,
+  .nw-cc-ring-spin,
+  .nw-cc-ring-spin-rev,
+  .nw-cc-radar::before,
+  .nw-cc-orb {
+    animation: none;
+  }
+}
