@@ -87,7 +87,7 @@ function PublicNavbarContent() {
             >
               <div className="flex shrink-0 items-center gap-3">
                 <Logo size="md" variant="lockup" />
-                <span className="nw-ai-status hidden xl:inline-flex" title="All systems operational">
+                <span className="nw-ai-status hidden 2xl:inline-flex" title="All systems operational">
                   <span className="nw-ai-status-dot" />
                   Online
                 </span>
@@ -119,11 +119,11 @@ function PublicNavbarContent() {
                 </LayoutGroup>
               </nav>
 
-              <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5">
+              <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={openCommandPalette}
-                  className="nw-float-search hidden xl:inline-flex"
+                  className="nw-float-search hidden 2xl:inline-flex"
                   aria-label="Open search"
                 >
                   <Search className="h-3.5 w-3.5 shrink-0 text-violet-400/90" />
@@ -150,7 +150,7 @@ function PublicNavbarContent() {
                 <button
                   type="button"
                   onClick={openCommandPalette}
-                  className="nw-nav-icon-btn xl:hidden"
+                  className="nw-nav-icon-btn 2xl:hidden"
                   aria-label="Search"
                 >
                   <Search className="h-4 w-4" />

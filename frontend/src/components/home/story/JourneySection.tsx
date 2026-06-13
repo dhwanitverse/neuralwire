@@ -40,7 +40,7 @@ export default function JourneySection({
     >
       <div
         data-journey-anchor
-        className={`pointer-events-none absolute left-0 w-px ${compact ? 'top-[42%]' : 'top-28 sm:top-32'}`}
+        className={`pointer-events-none absolute left-0 w-px ${compact ? 'top-1/2' : 'top-28 sm:top-32'}`}
         aria-hidden
       />
 
