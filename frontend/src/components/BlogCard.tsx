@@ -140,7 +140,7 @@ export default function BlogCard({ blog, variant = 'default', showTrending }: Bl
     return (
       <article className="nw-card-media group overflow-hidden rounded-3xl">
         <div className="relative min-h-[400px] lg:min-h-[480px]">
-          <SafeImage src={blog.image} alt={blog.title} fill className="nw-card-media-img object-cover opacity-50" sizes="100vw" priority />
+          <SafeImage src={blog.image} alt={blog.title} fill className="nw-card-media-img object-cover opacity-50" sizes="(max-width: 1024px) 100vw, 60vw" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/80 to-[#050816]/20" />
           <div className="absolute right-6 top-6 z-10"><CardActions id={blog._id} title={blog.title} /></div>
           <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10">

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, Clock, Radio } from 'lucide-react';
 import SafeImage from '@/components/SafeImage';
+import { ParallaxTilt } from '@/components/home/story/Parallax';
 import { Blog } from '@/types';
 import { getReadingTime, getRelativeTime, getCategoryColor } from '@/lib/utils';
 
@@ -40,7 +41,9 @@ export default function LatestArticles({ blogs }: LatestArticlesProps) {
 
       <div className="space-y-3 sm:space-y-4">
         <FeedNode isLead>
-          <LeadCard blog={lead} />
+          <ParallaxTilt>
+            <LeadCard blog={lead} />
+          </ParallaxTilt>
         </FeedNode>
 
         {feed.map((blog) => (

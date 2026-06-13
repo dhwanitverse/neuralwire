@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import BlogCard from '@/components/BlogCard';
+import { ParallaxTilt } from '@/components/home/story/Parallax';
 import { Blog } from '@/types';
 
 interface FeaturedShowcaseProps {
@@ -34,9 +35,9 @@ export default function FeaturedShowcase({
           : 'grid gap-6 lg:grid-cols-5 lg:items-start'
       }
     >
-      <div className={mode === 'magazine' ? 'min-w-0' : 'min-w-0 lg:col-span-3'}>
+      <ParallaxTilt className={mode === 'magazine' ? 'min-w-0' : 'min-w-0 lg:col-span-3'}>
         <BlogCard blog={featured} variant="featured" />
-      </div>
+      </ParallaxTilt>
 
       {supporting.length > 0 && (
         <div className={`grid gap-4 ${mode === 'magazine' ? 'min-w-0' : 'min-w-0 lg:col-span-2'}`}>

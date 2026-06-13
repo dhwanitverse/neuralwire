@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { IconGitHub, IconLinkedIn, IconX } from '@/components/icons/SocialIcons';
 import Logo from '@/components/Logo';
+import { Parallax } from '@/components/home/story/Parallax';
 import { BRAND } from '@/lib/brand';
 
 const groups = {
@@ -49,7 +50,9 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-white/[0.06] bg-[#030712] text-slate-400">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
-      <div className="glow-orb left-1/2 top-0 h-40 w-[32rem] -translate-x-1/2 bg-violet-600/8" />
+      <Parallax className="pointer-events-none absolute inset-x-0 top-0" distance={36}>
+        <div className="glow-orb left-1/2 top-0 h-40 w-[32rem] -translate-x-1/2 bg-violet-600/8" />
+      </Parallax>
 
       {/* CTA strip */}
       <div className="border-b border-white/[0.05] bg-gradient-to-r from-blue-500/[0.04] via-violet-500/[0.06] to-cyan-500/[0.04]">

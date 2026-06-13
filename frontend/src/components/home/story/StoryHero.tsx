@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChevronDown, Search, Sparkles, ArrowRight, Activity } from 'lucide-react';
 import IntelligenceMap from '@/components/home/IntelligenceMap';
+import { Parallax } from '@/components/home/story/Parallax';
 import { openCommandPalette } from '@/lib/openSearch';
 import { BRAND } from '@/lib/brand';
 
@@ -15,8 +16,10 @@ const STATS = [
 export default function StoryHero() {
   return (
     <div className="relative min-h-[calc(100dvh-var(--site-header-offset,100px))] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 nw-hero-grid opacity-60" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_30%_-5%,rgba(59,130,246,0.16),transparent_55%),radial-gradient(ellipse_55%_45%_at_100%_60%,rgba(139,92,246,0.14),transparent_50%)]" />
+      <Parallax className="pointer-events-none absolute -inset-y-24 inset-x-0" distance={60}>
+        <div className="absolute inset-0 nw-hero-grid opacity-60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_30%_-5%,rgba(59,130,246,0.16),transparent_55%),radial-gradient(ellipse_55%_45%_at_100%_60%,rgba(139,92,246,0.14),transparent_50%)]" />
+      </Parallax>
 
       <div className="relative mx-auto flex min-h-[calc(100dvh-var(--site-header-offset,100px))] max-w-7xl flex-col justify-center px-4 pb-24 pt-10 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
@@ -92,9 +95,9 @@ export default function StoryHero() {
                   Neural net
                 </span>
               </div>
-              <div className="relative">
+              <Parallax className="relative" distance={20} direction={-1}>
                 <IntelligenceMap />
-              </div>
+              </Parallax>
             </div>
           </div>
         </div>

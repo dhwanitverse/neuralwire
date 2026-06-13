@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { Parallax } from '@/components/home/story/Parallax';
 
 interface JourneySectionProps {
   step: number;
@@ -45,8 +46,14 @@ export default function JourneySection({
 
       {glow !== 'none' && (
         <div className="nw-section-ambient pointer-events-none absolute inset-0" aria-hidden>
-          <div className={`absolute inset-0 bg-gradient-to-b ${GLOW[glow]}`} />
-          <div className="nw-section-active-glow absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(139,92,246,0.09),transparent_65%)]" />
+          <Parallax
+            className="absolute -inset-y-16 inset-x-0"
+            distance={26 + (step % 3) * 12}
+            direction={step % 2 === 0 ? 1 : -1}
+          >
+            <div className={`absolute inset-0 bg-gradient-to-b ${GLOW[glow]}`} />
+            <div className="nw-section-active-glow absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(139,92,246,0.09),transparent_65%)]" />
+          </Parallax>
         </div>
       )}
 
